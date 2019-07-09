@@ -1,5 +1,4 @@
 @import "_normalize";
-@import "_variables";
 
 
 html {
@@ -11,6 +10,254 @@ html {
 }
 
 body {
-  color: $yellow;
-  background: $violet;
+  background: white;
+  /*background: linear-gradient(148deg, rgba(2, 0, 36, 1) 0%, rgba(131, 86, 177, 1) 49%, rgba(0, 212, 255, 1) 100%);*/
+  background-attachment: fixed;
+  margin: 0;
 }
+
+.main {
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 0px auto;
+}
+
+.navigation__base {
+  padding: 10px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: gray;
+}
+
+.navigation__link {
+  font: 18px Sans black;
+  text-align: center;
+  text-decoration: none;
+  color: rgb(231, 231, 231);
+  padding: 8px;
+  flex-shrink: 1;
+}
+
+.navigation__link:hover {
+  color:rgb(241, 205, 0);
+  background-color: rgb(56, 50, 50);
+}
+
+.main__header {
+  color:gray;
+  /* Nie stosować importanta. Ważność (specyficzność) identyfikatorów stylowania: !important, <style="">, #id, .class, element {parametr: nastawa;}    id do nawigacji, class do stylowania*/
+  /* Aby stylować strony we wszystkich podkatalogach zastosuj składnię href="../style.css"*/
+}
+
+.about {
+  display: grid;
+  background: linear-gradient(148deg, rgba(113, 113, 116, 0.1) 0%, rgba(55, 50, 59, 0.1) 49%, rgba(194, 142, 0, 0.1) 100%);
+  border-radius: 0% 10%;
+ 
+  
+  
+ 
+  /* Taka konfiguracja parametrów width i max-width umożliwia stworzenie podstawowej resposywności, jeśli chodzi o                                wielkość ekranu. vw - viewport width vh - viewport height; elementy zdefiniowane z użyciem obu jednostek zmieniają                           się dynamicznie przy skalowaniu okna przeglądarki; nie warto ich używać jednak do wszystkiego */
+}
+
+.about__header {
+  color: gray;
+  grid-area: 1;
+
+}
+
+.about_photo {
+  grid-area: 2;
+  max-width: 97px;
+  margin-right: 12px;
+  border-radius: 0% 50%;
+  
+}
+
+.about__paragraph {
+  grid-area: 2;
+  line-height: 24px;
+  padding-left: 5px;
+  border-left: 5px solid rgb(241, 205, 0);
+  border-radius: 0px;
+  margin: 16px 16px;
+  text-align: justify;
+  text-indent:32px;
+}
+
+.about__paragraph--color {
+  color:rgb(241, 205, 0);
+  border: none;
+  grid-area: 3;
+}
+
+.about__paragraph--pusty {
+  grid-area: 4;
+  margin: 16px;
+}
+
+/* W modelu BEM w HTML-u powtarzaemy nazwę elementu "about__paragraph", aby element podrzędny różnił się tylko wypisaną wartością (tu "color"), a resztę dziedziczył z elementu nadrzędnego, np. font-size. */
+
+.days {
+  color: gray;
+}
+
+.day__header {
+  color: black;
+}
+
+.day__paragraph {
+  padding-left: 5px;
+  border-left: 5px solid rgb(241, 205, 0);
+  border-radius: 0px;
+  margin-left: 16px;
+  line-height: 24px;
+}
+
+.day__link {
+  color: rgb(119, 101, 1);
+}
+
+.article {
+  display: grid;
+  grid-template-columns: 1fr;
+  
+}
+
+.article__header {
+  color: gray;
+  font-size: 1.5em;
+  line-height: 32px;
+  grid-row-start: 1;
+  grid-row-end: 1;
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+.article__paragraph {
+  grid-row-start: 2;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+.article__footer {
+  grid-row-start: 3;
+  grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 1;
+}
+
+.article__footer--photo {
+  grid-row-start: 3;
+  grid-row-end: 3;
+  grid-column-start: 2;
+  grid-column-end: 2;
+  border-radius: 0% 50%;
+}
+
+
+.footer {
+  display: block;
+  max-width: 900px;
+  margin: 35px auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-column-gap: 16px;
+  grid-row-gap: 16px;
+}
+
+@media screen and (min-width: 961px) {
+  .main {
+      max-width: 1000px;
+  }
+  .menuButton__container {
+      display: none;
+  }
+  .menuButton {
+      display: none;
+  }
+  .navigation__base {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+  }
+  .navigation__link {
+      flex-shrink: 1;
+  }
+}
+
+@media screen and (min-width: 250px) and (max-width: 960px) {
+  
+  .grid {
+      grid-template-columns: 1fr;
+  }
+  .day__header {
+      color: black;
+      font-size: 1.5em;
+  }
+  .menuButton__container {
+      background-color: rgb(83, 82, 82);
+  }
+  .menuButton {
+      color: white;
+      border: none;
+      background: none;
+      font-size: 2em;
+  }
+  .navigation__base {
+      display: none;
+      position: absolute;
+  }
+  .navigation__link {
+      flex-shrink: 2;
+  }
+  .navigation__mobile {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+  }
+}
+
+@media screen and (min-width: 150px) and (max-width: 249px) {
+ 
+  .grid {
+      grid-template-columns: 1fr;
+  }
+  .day__header {
+      color: gray;
+      font-size: 2em;
+  }
+  .menuButton__container {
+      background-color: rgb(83, 82, 82);
+  }
+  .menuButton {
+      color: lightgray;
+      border: none;
+      background: none;
+      font-size: 2em;
+  }
+ 
+  .navigation__base {
+      display: none;
+      position: absolute;
+      width: 100vw;
+  }
+  .navigation__link {
+      flex-shrink: 2;
+  }
+  .navigation__mobile {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+  }
+}
+
+/* Poniżej 655px wyświetlana będzie 1 kolumna zamiast dwóch - dostosowanie do nośnika = media (np. smartfon)*/
